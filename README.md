@@ -222,3 +222,97 @@ https://carlchen.icu/ubuntu20_dual_GPU/
 总结：思路是先升级内核到5.12.8，能apt-get之后更新软件，再编辑 grub加入amdgpu.exp_hw_support=1，使GUI支持amd核显。
 
 进入GUI之后再装Nvidia的驱动以及其他的。
+
+
+
+## 常用软件安装
+
+## OpenVPN
+
+https://community.openvpn.net/openvpn/wiki/OpenvpnSoftwareRepos
+
+We maintain several OpenVPN (OSS) software repositories. To setup the repositories you need to change to the root user. Typically this is done using *sudo*:
+
+```
+$ sudo -s
+```
+
+Then import the public GPG key that is used to sign the packages:
+
+```
+$ wget -O - https://swupdate.openvpn.net/repos/repo-public.gpg|apt-key add -
+```
+
+Next you need to create a sources.list fragment (as root) so that apt can find the new OpenVPN packages. One way to do it is this:
+
+```
+$ echo "deb http://build.openvpn.net/debian/openvpn/stable focal main" > /etc/apt/sources.list.d/openvpn-aptrepo.list
+```
+
+On Debian/Ubuntu use
+
+```
+$ apt-get update && apt-get install openvpn
+```
+
+运行即使用
+
+```shell
+sudo openvpn xxx.conf 
+```
+
+但是好像DNS有点问题。。。
+
+
+
+还是用OpenVPN3试试吧：
+
+https://community.openvpn.net/openvpn/wiki/OpenVPN3Linux
+
+First ensure that your apt supports the https transport:
+
+```
+   # apt install apt-transport-https
+```
+
+Install the OpenVPN repository key used by the OpenVPN 3 Linux packages
+
+```
+   # wget https://swupdate.openvpn.net/repos/openvpn-repo-pkg-key.pub
+   # apt-key add openvpn-repo-pkg-key.pub
+```
+
+Then you need to install the proper repository. Replace $DISTRO with the release name depending on your Debian/Ubuntu distribution.
+
+```
+   # wget -O /etc/apt/sources.list.d/openvpn3.list https://swupdate.openvpn.net/community/openvpn3/repos/openvpn3-$DISTRO.list
+   # apt update
+```
+
+And finally the openvpn3 package can be installed
+
+```
+   # apt install openvpn3
+```
+
+
+
+Import the configuration file:
+
+```
+$ openvpn3 config-import --config my-vpn-config.conf
+```
+
+Start a new VPN session
+
+```
+$ openvpn3 session-start --config my-vpn-config.conf
+```
+
+Listing established sessions
+
+```
+   $ openvpn3 sessions-list
+```
+
+这下连上了，但是为啥翻不了墙，bzd
