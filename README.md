@@ -3,6 +3,8 @@ Ubuntu安装
 
 
 
+## ROS安装
+
 http://wiki.ros.org/noetic/Installation/Ubuntu
 
 注意改成清华源
@@ -38,3 +40,19 @@ https://www.amd.com/en/support/graphics/amd-radeon-2nd-generation-vega/amd-radeo
 https://www.reddit.com/r/linuxquestions/comments/lca33g/5900hx_igpu_driver/
 
 http://ridgecrop.co.uk/index.htm?guiformat.htm
+
+
+
+## AX200驱动安装
+
+使用apt-get update会导致自动重启，估计是WiFi驱动不支持导致的
+
+## AMD Radeon Graphics显卡驱动安装
+
+启动后，从Grub界面进入普通Ubuntu会卡死在开机Logo界面，显卡驱动问题
+
+使用GPU-Z可以看到内部代号为Cezanne-C4 2100MHz，类似于
+
+## RTX 3070驱动和Cuda安装
+
+使用GPU-Z可以看到内部代号为GA104-A1 1560MHz
