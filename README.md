@@ -63,7 +63,11 @@ http://ridgecrop.co.uk/index.htm?guiformat.htm
 
 注意到安装完系统初次启动的时候有一个nouveau错误
 
-查看驱动安装情况：lshw -c video
+查看驱动安装情况：
+
+```shell
+lshw -c video
+```
 
 https://blog.csdn.net/weixin_53242716/article/details/110948529
 
@@ -158,3 +162,50 @@ and reboot.
 然而这个好像不是关键，依然卡在这个地方
 
 /dev/nvme0n1p3: clean, xx/xx files, xx/xx blocks
+
+
+
+好消息是更新内核之后，apt-get没问题了，提示执行
+
+apt --fix-broken install
+
+这一步应该是当初断网安装内核导致的。
+
+```shell
+apt-get update
+apt --fix-broken install
+apt-get full-upgrade
+```
+
+upgrade到最后跳回了Recovery Menu
+
+```
+lshw -c video
+```
+
+发现两个显卡都是UNCLAIM状态，说明驱动都掉了
+
+
+
+## AMD 核显驱动支持
+
+编辑 grub 启动目录
+
+```
+sudo vi /etc/default/grub
+```
+
+在 `GRUB_CMDLINE_LINUX_DEFAULT=`一行双引号内的末尾，添加 `amdgpu.exp_hw_support=1`，修改后如下
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash amdgpu.exp_hw_support=1"
+```
+
+保存退出，并更新 grub
+
+```
+sudo update-grub
+```
+
+重启
+
