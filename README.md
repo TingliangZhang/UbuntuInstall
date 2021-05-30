@@ -11,6 +11,10 @@ http://wiki.ros.org/noetic/Installation/Ubuntu
 
 https://www.zybuluo.com/yanbo01haomiao/note/1704990
 
+`efi`：引导分区，分区类型为逻辑分区，大小200M，分区格式ext4;
+
+`挂载点/`：安装系统和软件的主分区，分区类型为主分区，大小100G（可根据实际情况增加），分区格式ext4;
+
 https://blog.csdn.net/tjuyanming/article/details/79267984
 
 因为是AMD核显+Nvidia独显，会有问题
