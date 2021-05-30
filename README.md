@@ -362,3 +362,8 @@ https://docs.github.com/en/github/getting-started-with-github/quickstart/set-up-
 sudo apt install python3-pip
 ```
 
+
+
+## ROS 2
+
+https://docs.ros.org/en/foxy/Installation/Ubuntu-Development-Setup.html
