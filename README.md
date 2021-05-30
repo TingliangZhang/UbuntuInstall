@@ -209,3 +209,16 @@ sudo update-grub
 
 重启
 
+https://carlchen.icu/ubuntu20_dual_GPU/
+
+
+
+终于成功的进入了GUI
+
+！！！
+
+
+
+总结：思路是先升级内核到5.12.8，能apt-get之后更新软件，再编辑 grub加入amdgpu.exp_hw_support=1，使GUI支持amd核显。
+
+进入GUI之后再装Nvidia的驱动以及其他的。
