@@ -135,6 +135,12 @@ Linux ubuntu 5.10.9-051009-generic
 
 initramfs unpacking failed: Decoding failed
 
+以及安装时命令行报错
+
+[w: possible missing firmware /lib/firmware/rtl_nic/rtl8125a-3.fw for module r8169](https://askubuntu.com/questions/1287896/w-possible-missing-firmware-lib-firmware-rtl-nic-rtl8125a-3-fw-for-module-r816)
+
+
+
 https://forums.linuxmint.com/viewtopic.php?t=323152
 
 `/etc/initramfs-tools/initramfs.conf` Change `COMPRESS=lz4` to `COMPRESS=gzip`
@@ -146,3 +152,9 @@ sudo update-initramfs -u -k all
 ```
 
 and reboot.
+
+
+
+然而这个好像不是关键，依然卡在这个地方
+
+/dev/nvme0n1p3: clean, xx/xx files, xx/xx blocks
