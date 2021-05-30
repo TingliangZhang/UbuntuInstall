@@ -63,7 +63,7 @@ http://ridgecrop.co.uk/index.htm?guiformat.htm
 
 注意到安装完系统初次启动的时候有一个nouveau错误
 
-
+查看驱动安装情况：lshw -c video
 
 https://blog.csdn.net/weixin_53242716/article/details/110948529
 
@@ -107,7 +107,8 @@ linux-modules-5.12.8-051208-generic_5.12.8-051208.202105281232_amd64.deb
 ```shell
 fdisk -l
 mkdir ~/u
-mount /dev/sda ~/u
+mkfs.vfat -F 32 /dev/sda1 #需要格式化的话用这个
+mount /dev/sda1 ~/u
 cd /mnt
 ls
 ```
@@ -130,3 +131,18 @@ uname -a
 Linux ubuntu 5.10.9-051009-generic
 ```
 
+安完报错：
+
+initramfs unpacking failed: Decoding failed
+
+https://forums.linuxmint.com/viewtopic.php?t=323152
+
+`/etc/initramfs-tools/initramfs.conf` Change `COMPRESS=lz4` to `COMPRESS=gzip`
+
+Save the changes then:
+
+```shell
+sudo update-initramfs -u -k all
+```
+
+and reboot.
