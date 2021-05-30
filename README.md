@@ -227,6 +227,23 @@ https://carlchen.icu/ubuntu20_dual_GPU/
 
 ## 常用软件安装
 
+```
+sudo apt-get install vim htop
+```
+
+Chrome和VS Code下载deb文件后：
+
+```shell
+sudo -s
+apt-get install ./name.deb
+```
+
+VLC等用的使snap商店，安装snap，可使用以下命令或图形界面的store通过鼠标点击操作：
+
+```
+sudo snap install vlc //安装vlc snap
+```
+
 ## OpenVPN
 
 https://community.openvpn.net/openvpn/wiki/OpenvpnSoftwareRepos
@@ -316,3 +333,32 @@ Listing established sessions
 ```
 
 这下连上了，但是为啥翻不了墙，bzd
+
+还是断掉吧：
+
+```shell
+openvpn3 session-manage --disconnect --config skyworks-campus-ipv4-ubuntu.conf
+```
+
+
+
+## Github使用
+
+https://cli.github.com/manual/
+
+https://github.com/cli/cli
+
+https://docs.github.com/en/github/getting-started-with-github/quickstart/set-up-git
+
+
+
+
+
+## Python 3
+
+系统自带python3，安一下pip3
+
+```
+sudo apt install python3-pip
+```
+
